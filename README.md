@@ -9,7 +9,7 @@ Projet Spring Boot avec intégration Jenkins, Docker et déploiement automatisé
 - Maven
 - Docker
 - Jenkins
-
+aaz
 ## Utilisation
 ```bash
 mvn clean package
@@ -20,7 +20,7 @@ docker run -p 8080:8080 spring-boot-demo
 ## CI/CD
 Le projet utilise Jenkins pour l'intégration continue avec :
 - Build Maven
-- Tests automatisés  
+- Tests automatisés
 - Construction d'image Docker
 - Push vers Docker Hub
 - Déploiement automatique
