@@ -16,7 +16,7 @@ mvn clean package
 docker build -t spring-boot-demo .
 docker run -p 8080:8080 spring-boot-demo
 ```
-
+aaae
 ## CI/CD
 Le projet utilise Jenkins pour l'intégration continue avec :
 - Build Maven
