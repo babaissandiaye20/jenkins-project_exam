@@ -31,7 +31,7 @@ pipeline {
 
         stage('Build & Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_Java', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'DOCKER_EXAM', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     script {
                         def appName = 'jenkins-project_exam' // Nom de l'application
                         def branchName = env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'latest'
@@ -44,6 +44,7 @@ pipeline {
                             docker build -t "${dockerImage}" .
 
                             echo "Logging into Docker Hub..."
+
                             echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
 
                             echo "Pushing Docker image: ${dockerImage}"
@@ -56,7 +57,7 @@ pipeline {
 
         stage('Deploy to Render') {
             steps {
-                withCredentials([string(credentialsId: 'RENDER_HOOK', variable: 'RENDER_HOOK_URL')]) {
+                withCredentials([string(credentialsId: 'RENDER_HOOK_EXAM', variable: 'RENDER_HOOK_URL')]) {
                     sh 'curl -X POST "$RENDER_HOOK_URL"'
                 }
             }
